@@ -2,8 +2,6 @@ console.log('test')
 ServerSide = 'c5c921b4fc2f861f24b35b4aac94394c'
 // url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=${part}&appid=${ServerSide}`
 
-
-
 /* 
 
 Remove/Exhange .daily
@@ -26,27 +24,27 @@ const getCity = async (city) => {
     console.log(lat)
     // return cordData
 
-    const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=(minutely,hourly,daily,alerts)&appid=${ServerSide}`)
-    const data = response.json()
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${ServerSide}`)
+    const data = await response.json()
     console.log(data)
 
     // waiting on api key to activate. Presetting these values to variables. DOUBLE CHECK LOG DATA TO INSURE CORRECT PARCING, will most likely have to remove current.
+// 
+    // const allData = document.querySelectorAll('.title-text')
 
-    const allData = document.querySelectorAll('.title-text')
-
-    const temp = ((allData.data.current.temp.day)*1.8)+32
+    let temp = ((data.main.temp)*1.8)+32
     console.log(temp)
     const setTemp = document.getElementById('temp').innerHTML = `
     <h3>${temp}</h3>
     `
 
-    const forecast = data.current.weather.main.innerText
+    const forecast = data.weather[0].main
     console.log(forecast)
     const setForecast = document.getElementById('forecast').innerHTMl = `
     <h3>${forecast}</h3>
     `
 
-    const humidity = data.current.humidity.innerText
+    const humidity = data.main.humidity
     console.log(humidity)
     const setHumidity = document.getElementById('humidity').innerHTML = `
     <h3>${humidity}</h3>
@@ -57,4 +55,4 @@ const getCity = async (city) => {
     `
     
 }
-getCity('lexington')
+getCity('elizabethtown')
