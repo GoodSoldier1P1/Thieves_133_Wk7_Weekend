@@ -30,12 +30,21 @@ const getCity = async (city) => {
 
     // waiting on api key to activate. Presetting these values to variables. DOUBLE CHECK LOG DATA TO INSURE CORRECT PARCING, will most likely have to remove current.
 // 
-    // const allData = document.querySelectorAll('.title-text')
+    // const test = document.getElementById('test').innerHTML = `
+    // ${lon} , ${lat}
+    // `
 
-    let temp = ((data.main.temp)*1.8)+32
-    console.log(temp)
-    const setTemp = document.getElementById('temp').innerHTML = `
-    <h3>${temp}</h3>
+    let tempMax = data.main.temp_max
+    const tempConvertMax = (tempMax * 1.8) + 32
+    console.log(tempMax)
+    const setMax = document.getElementById('tempMax').innerHTML = `
+    <h3>${tempConvertMax}</h3>
+    `
+
+    let tempMin = data.main.temp_min
+    const tempConvertMin = (tempMin * 1.8) + 32
+    const setMin = document.getElementById('tempMin').innerHTML = `
+    <h3>${tempConvertMin}</h3>
     `
 
     const forecast = data.weather[0].main
@@ -50,12 +59,9 @@ const getCity = async (city) => {
     <h3>${humidity}</h3>
     `
 
-    const test = document.getElementById('test').innerHTML = `
-    ${lon} , ${lat}
-    `
     
 }
-getCity()
+// getCity()
 
 const getInfo = async (event) => {
     if (event){

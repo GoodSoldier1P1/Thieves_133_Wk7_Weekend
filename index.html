@@ -8,22 +8,22 @@
     <title>What's the Weather?</title>
 </head>
 <body>
-
     <div class="mb-3">
         <label for="city" class="form-label search">Enter Your City: </label>
-        <input type="text" class="form-control search" id="city" placeholder="Example input placeholder">
+        <input type="text" class="form-control search" id="city" placeholder="Your City">
         <button type="submit" class="searchBtn" id="searchBtn" onclick="getInfo()">Search</button>
-      </div>
-
-
-    <h1 id="test">Test</h1>
-    <div id="temp">ttt</div>
-
-    <div id="forecast">fff</div>
-
-    <div id="humidity">hhh</div>
-
-
+    </div>
+    
+    
+    <div id="tempMax" class="info">tempMax</div>
+    <div id="tempMin" class="info">tempMin</div>
+    
+    <div id="forecast" class="info">forecast</div>
+    
+    <div id="humidity" class="info">humidity</div>
+    
+    
+    <p>Results may not always be accurate to what you are looking for. </p>
     <script src="/main.js"></script>
 </body>
 </html>
