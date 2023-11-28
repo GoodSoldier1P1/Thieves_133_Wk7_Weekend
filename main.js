@@ -40,7 +40,7 @@ const getCity = async (city) => {
 
     const forecast = data.weather[0].main
     console.log(forecast)
-    const setForecast = document.getElementById('forecast').innerHTMl = `
+    const setForecast = document.getElementById('forecast').innerHTML = `
     <h3>${forecast}</h3>
     `
 
@@ -55,4 +55,17 @@ const getCity = async (city) => {
     `
     
 }
-getCity('elizabethtown')
+getCity()
+
+const getInfo = async (event) => {
+    if (event){
+        event.preventDefault()
+    }
+
+    const citySearch = document.getElementById('city').value
+    try {
+        await getCity(citySearch)
+    } catch (error){
+        console.error('Submit error: ', error)
+    }
+}
