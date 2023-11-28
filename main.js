@@ -34,17 +34,15 @@ const getCity = async (city) => {
     // ${lon} , ${lat}
     // `
 
-    let tempMax = data.main.temp_max
-    const tempConvertMax = (tempMax * 1.8) + 32
+    let tempMax = parseFloat(data.main.temp_max)
     console.log(tempMax)
     const setMax = document.getElementById('tempMax').innerHTML = `
-    <h3>${tempConvertMax}</h3>
+    <h3>${Math.ceil(((tempMax-273.15)*1.8)+32)}</h3>
     `
 
-    let tempMin = data.main.temp_min
-    const tempConvertMin = (tempMin * 1.8) + 32
+    let tempMin = parseFloat(data.main.temp_min)
     const setMin = document.getElementById('tempMin').innerHTML = `
-    <h3>${tempConvertMin}</h3>
+    <h3>${Math.ceil(((tempMin-273.15)*1.8)+32)}</h3>
     `
 
     const forecast = data.weather[0].main
